@@ -1,0 +1,197 @@
+<!doctype html><html lang="so"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#08734f"><title>DireBajaaj Live</title><style>
+:root{--g:#08734f;--g2:#0aa06e;--ink:#10251d;--muted:#66766f;--bg:#f1f7f4;--line:#dbe8e1;--orange:#ff9d1b}*{box-sizing:border-box}body{margin:0;background:linear-gradient(#eaf7f1,#f8faf9);font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink)}button,input{font:inherit}.app{max-width:900px;margin:auto;padding:14px 14px 90px}.hero{background:linear-gradient(135deg,#06452f,#0b7a54 60%,#0aa06e);color:#fff;border-radius:26px;padding:20px;box-shadow:0 16px 40px #0b6b4720}.brand{display:flex;align-items:center;gap:12px}.logo{width:54px;height:54px;border-radius:17px;background:#fff;display:grid;place-items:center;font-size:29px}.brand h1{margin:0;font-size:27px}.brand p{margin:4px 0;color:#dff7eb}.live{margin-left:auto;background:#ffffff22;border:1px solid #ffffff33;border-radius:999px;padding:8px 10px;font-size:12px}.hero h2{font-size:28px;margin:22px 0 8px}.hero>p{margin:0;color:#dcf4e9}.langs{display:flex;gap:7px;margin-top:16px}.langs button{border:1px solid #ffffff55;background:#ffffff11;color:#fff;border-radius:999px;padding:8px 11px}.langs .active{background:#fff;color:var(--g);font-weight:800}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}.tabs button{border:1px solid var(--line);background:white;border-radius:17px;padding:14px;font-weight:800}.tabs .active{background:var(--g);color:#fff}.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px;margin-top:13px;box-shadow:0 10px 28px #0d4f3510}.card h3{margin:0 0 10px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}label{display:block;font-weight:700;font-size:13px;margin-top:11px}input{display:block;width:100%;margin-top:7px;border:1px solid #cadbd2;background:#fbfdfc;border-radius:14px;padding:13px;outline:none}input:focus{border-color:#35a57a;box-shadow:0 0 0 3px #35a57a18}.primary,.ghost,.danger{border:0;border-radius:14px;padding:12px 14px;font-weight:800;margin-top:12px}.primary{background:var(--g);color:#fff;width:100%}.ghost{background:#edf8f3;color:var(--g);border:1px solid #d4ecdf}.danger{background:#fff0f0;color:#a92c2c}.hidden{display:none!important}.row{display:flex;align-items:center;justify-content:space-between;gap:15px}.switch{margin:0}.switch input{display:none}.switch span{display:block;width:54px;height:31px;border-radius:999px;background:#cad6d0;position:relative}.switch span:after{content:"";position:absolute;width:23px;height:23px;left:4px;top:4px;background:white;border-radius:50%;box-shadow:0 2px 5px #0003;transition:.2s}.switch input:checked+span{background:var(--g2)}.switch input:checked+span:after{transform:translateX(23px)}.empty{color:var(--muted);text-align:center;padding:22px 8px}.ride{border:1px solid var(--line);border-radius:17px;padding:14px;margin-top:10px;background:#fbfdfc}.head{display:flex;justify-content:space-between;gap:10px}.badge{font-size:11px;font-weight:800;border-radius:999px;padding:6px 9px;background:#fff2d8;color:#9b6500}.badge.accepted,.badge.arrived,.badge.in_progress{background:#e6f1ff;color:#14569d}.route{margin-top:10px}.route b{display:block;font-size:11px;color:var(--muted)}.actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}.actions button,.actions a{border:0;border-radius:12px;padding:10px 11px;font-weight:800;text-decoration:none;background:#edf8f3;color:var(--g)}.actions .take{background:var(--g);color:white}.msg{margin-top:10px;border-radius:12px;padding:10px 12px;background:#eef9f4;color:#256147}.msg.err{background:#fff0f0;color:#9f2f2f}#toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,120px);background:#12241d;color:white;border-radius:13px;padding:11px 15px;transition:.25s;z-index:20}#toast.show{transform:translate(-50%,0)}footer{text-align:center;color:#718077;font-size:12px;margin-top:18px}@media(max-width:650px){.grid{grid-template-columns:1fr}.app{padding:10px 10px 80px}.hero{border-radius:21px}.hero h2{font-size:24px}.live{font-size:0}.live:after{content:"●";font-size:14px}.card{padding:15px}}
+
+.mapFrame{width:100%;height:300px;border:1px solid var(--line);border-radius:16px;background:#eef5f1;margin-top:8px}
+.mapStatus{color:var(--muted);font-size:12px;line-height:1.45}
+.mapLink{display:inline-flex;align-items:center;gap:7px;margin-top:10px;text-decoration:none;background:#edf8f3;color:var(--g);border:1px solid #d4ecdf;border-radius:13px;padding:10px 12px;font-weight:800}
+@media(max-width:650px){.mapFrame{height:250px}}
+
+</style></head><body>
+<div class="app"><header class="hero"><div class="brand"><div class="logo">🛺</div><div><h1>DireBajaaj</h1><p id="tag">Bajaaj kuu dhow, safar kuu fudud.</p></div><span id="live" class="live">Connecting…</span></div><h2 id="headline">Dalbo bajaaj ama qaado safar — LIVE</h2><p id="sub">Rakaabka iyo darawalku waxay isku arkaan waqtiga-dhabta ah.</p><div class="langs"><button data-lang="so" class="active">SO</button><button data-lang="om">OM</button><button data-lang="am">AM</button><button data-lang="en">EN</button></div></header>
+<nav class="tabs"><button id="tabP" class="active">👤 <span data-k="passenger">Rakaab</span></button><button id="tabD">🛺 <span data-k="driver">Darawal</span></button></nav>
+<section id="passengerView"><div class="card"><h3 data-k="request">Dalbo Bajaaj</h3><div class="grid"><label><span data-k="name">Magaca</span><input id="pName" placeholder="Magacaaga"></label><label><span data-k="phone">Telefoon</span><input id="pPhone" placeholder="+251..." inputmode="tel"></label></div><label><span data-k="pickup">Meesha laga qaadayo</span><input id="pickup" placeholder="Kezira, Dire Dawa"></label><button id="pGps" class="ghost">📍 <span data-k="useGps">Isticmaal GPS</span></button><label><span data-k="destination">Meesha aad aadayso</span><input id="destination" placeholder="Sabian"></label><button id="requestBtn" class="primary">🛺 <span data-k="requestBtn">Bajaaj Dalbo</span></button><div id="pMsg"></div></div><div class="card"><h3 data-k="currentRide">Safarkaaga Hadda</h3><div id="pRide" class="empty">Weli safar firfircoon ma lihid.</div></div><div id="driverMapCard" class="card hidden"><h3 data-k="liveMap">Goobta Darawalka — LIVE</h3><p id="driverDistance" class="mapStatus"></p><iframe id="driverMap" class="mapFrame" title="Driver live map" loading="lazy"></iframe><a id="openMap" class="mapLink" target="_blank" rel="noopener">🗺️ <span data-k="openMap">Khariidadda weyn fur</span></a></div></section>
+<section id="driverView" class="hidden"><div id="registerCard" class="card"><h3 data-k="driverReg">Diiwaangelinta Darawalka</h3><div class="grid"><label><span data-k="name">Magaca</span><input id="dName"></label><label><span data-k="phone">Telefoon</span><input id="dPhone" inputmode="tel"></label></div><label><span data-k="plate">Lambarka Bajaajta / Plate</span><input id="dPlate" placeholder="DD-12345"></label><button id="saveDriver" class="primary" data-k="saveDriver">Kaydi Darawalka</button><div id="dMsg"></div></div>
+<div id="driverPanel" class="hidden"><div class="card row"><div><h3 data-k="availability">Xaaladda Darawalka</h3><p id="onlineText">Offline</p><small id="gpsShareStatus" class="mapStatus" data-k="gpsOff">GPS live waa dansan yahay.</small></div><label class="switch"><input id="online" type="checkbox"><span></span></label></div><div class="card"><h3 data-k="activeTrip">Safarka Aad Haysato</h3><div id="activeRide" class="empty">Ma jiro safar aad haysato.</div></div><div class="card"><h3 data-k="requests">Codsiyada Safarka</h3><div id="queue" class="empty">Hadda codsi cusub ma jiro.</div></div></div></section>
+<footer>DireBajaaj Live MVP • Supabase Realtime<br><small>Ka hor public launch: driver verification, CAPTCHA iyo admin security waa in la xoojiyo.</small></footer></div>
+<div id="toast"></div><script>
+const SUPABASE_URL='https://oayyvkmlyfuqjbbqkrez.supabase.co';
+const SUPABASE_KEY='sb_publishable_W86OdL9AWgI1AjvuDYH43g_QiqU2jqJ';
+const $=id=>document.getElementById(id);
+let user=null, session=null, driver=null, geo={lat:null,lng:null}, lang=localStorage.dbLang||'so';
+let pollTimer=null, busy=false, driverWatchId=null, lastDriverGpsPush=0;
+
+const tr={
+so:{passenger:'Rakaab',driver:'Darawal',request:'Dalbo Bajaaj',name:'Magaca',phone:'Telefoon',pickup:'Meesha laga qaadayo',destination:'Meesha aad aadayso',useGps:'Isticmaal GPS',requestBtn:'Bajaaj Dalbo',currentRide:'Safarkaaga Hadda',driverReg:'Diiwaangelinta Darawalka',plate:'Lambarka Bajaajta / Plate',saveDriver:'Kaydi Darawalka',availability:'Xaaladda Darawalka',activeTrip:'Safarka Aad Haysato',requests:'Codsiyada Safarka',waiting:'Sugaya darawal',accepted:'Darawal ayaa aqbalay',arrived:'Darawalku wuu yimid',in_progress:'Safarku wuu socdaa',from:'Ka qaad',to:'U socdo',cancel:'Jooji',call:'Wac',accept:'Aqbal',start:'Bilow',complete:'Dhamee',fill:'Fadlan buuxi xogta muhiimka ah.',sent:'Codsiga waa la diray.',saved:'Darawalka waa la kaydiyey.',gps:'GPS waa la helay.',gpsFail:'GPS lama heli karin.',noRide:'Weli safar firfircoon ma lihid.',noRequests:'Hadda codsi cusub ma jiro.',noActive:'Ma jiro safar aad haysato.',already:'Waxaad hore u leedahay safar firfircoon.',other:'Safarka darawal kale ayaa qaatay.',connecting:'Connecting…',live:'● LIVE',offline:'Offline',liveMap:'Goobta Darawalka — LIVE',openMap:'Khariidadda weyn fur',driverAway:'Darawalku qiyaastii {km} km ayuu kaa jiraa',gpsSharing:'GPS-gaaga live ayaa lala wadaagayaa rakaabka.',gpsOff:'GPS live waa dansan yahay.'},
+en:{passenger:'Passenger',driver:'Driver',request:'Request a Bajaj',name:'Name',phone:'Phone',pickup:'Pickup',destination:'Destination',useGps:'Use GPS',requestBtn:'Request Bajaj',currentRide:'Your Active Ride',driverReg:'Driver Registration',plate:'Bajaj / Plate number',saveDriver:'Save Driver',availability:'Driver Availability',activeTrip:'Your Active Trip',requests:'Ride Requests',waiting:'Waiting for driver',accepted:'Driver accepted',arrived:'Driver arrived',in_progress:'Trip in progress',from:'Pickup',to:'Destination',cancel:'Cancel',call:'Call',accept:'Accept',start:'Start',complete:'Complete',fill:'Please fill all required fields.',sent:'Ride request sent.',saved:'Driver saved.',gps:'Location captured.',gpsFail:'Could not get location.',noRide:'You have no active ride.',noRequests:'No new ride requests.',noActive:'No active trip.',already:'You already have an active ride.',other:'Another driver already accepted this ride.',connecting:'Connecting…',live:'● LIVE',offline:'Offline',liveMap:'Driver Location — LIVE',openMap:'Open full map',driverAway:'Driver is about {km} km away',gpsSharing:'Your live GPS is being shared with the passenger.',gpsOff:'Live GPS is off.'},
+om:{passenger:'Imaltuu',driver:'Konkolaachisaa',request:'Bajaaj Waami',name:'Maqaa',phone:'Bilbila',pickup:'Bakka irraa fuudhamu',destination:'Bakka deemu',useGps:'GPS fayyadami',requestBtn:'Bajaaj Waami',currentRide:'Imala Kee Amma',driverReg:'Galmee Konkolaachisaa',plate:'Lakkoofsa Bajaaj / Plate',saveDriver:'Galmeessi',availability:'Haala Konkolaachisaa',activeTrip:'Imala Ati Qabdu',requests:'Waamicha Imalaa',waiting:'Konkolaachisaa eegaa',accepted:'Konkolaachisaan fudhate',arrived:'Konkolaachisaan gahe',in_progress:'Imalli deemaa jira',from:'Ka’umsa',to:'Bakka deemu',cancel:'Haqi',call:'Bilbili',accept:'Fudhadhu',start:'Jalqabi',complete:'Xumuri',fill:'Odeeffannoo barbaachisaa guuti.',sent:'Waamichi ergame.',saved:'Konkolaachisaan kuufame.',gps:'GPS argame.',gpsFail:'GPS hin argamne.',noRide:'Imala hojii irra jiru hin qabdu.',noRequests:'Amma waamichi haaraan hin jiru.',noActive:'Imala hojii irra jiru hin jiru.',already:'Imala hojii irra jiru qabda.',other:'Konkolaachisaa biraa fudhate.',connecting:'Connecting…',live:'● LIVE',offline:'Offline',liveMap:'Bakka Konkolaachisaa — LIVE',openMap:'Map guutuu bani',driverAway:'Konkolaachisaan tilmaamaan {km} km si irraa jira',gpsSharing:'GPS live kee imaltuu waliin qoodamaa jira.',gpsOff:'GPS live cufaa dha.'},
+am:{passenger:'ተሳፋሪ',driver:'አሽከርካሪ',request:'ባጃጅ ይጠይቁ',name:'ስም',phone:'ስልክ',pickup:'መነሻ',destination:'መድረሻ',useGps:'GPS ተጠቀም',requestBtn:'ባጃጅ ጠይቅ',currentRide:'የአሁኑ ጉዞ',driverReg:'የአሽከርካሪ ምዝገባ',plate:'የባጃጅ / ፕሌት ቁጥር',saveDriver:'አስቀምጥ',availability:'የአሽከርካሪ ሁኔታ',activeTrip:'የያዙት ጉዞ',requests:'የጉዞ ጥያቄዎች',waiting:'አሽከርካሪ በመጠበቅ',accepted:'አሽከርካሪ ተቀብሏል',arrived:'አሽከርካሪ ደርሷል',in_progress:'ጉዞው ቀጥሏል',from:'መነሻ',to:'መድረሻ',cancel:'ሰርዝ',call:'ደውል',accept:'ተቀበል',start:'ጀምር',complete:'ጨርስ',fill:'እባክዎ መረጃውን ይሙሉ።',sent:'ጥያቄው ተልኳል።',saved:'መረጃው ተቀምጧል።',gps:'GPS ተገኝቷል።',gpsFail:'GPS አልተገኘም።',noRide:'ንቁ ጉዞ የለዎትም።',noRequests:'አሁን አዲስ ጥያቄ የለም።',noActive:'ንቁ ጉዞ የለም።',already:'ንቁ ጉዞ አለዎት።',other:'ሌላ አሽከርካሪ ተቀብሎታል።',connecting:'Connecting…',live:'● LIVE',offline:'Offline',liveMap:'የአሽከርካሪ ቦታ — LIVE',openMap:'ሙሉ ካርታ ክፈት',driverAway:'አሽከርካሪው በግምት {km} ኪ.ሜ ርቀት ላይ ነው',gpsSharing:'የቀጥታ GPS ቦታዎ ለተሳፋሪው እየተጋራ ነው።',gpsOff:'Live GPS ጠፍቷል።'}};
+const t=k=>(tr[lang]||tr.so)[k]||k;
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function toast(s){const x=$('toast');x.textContent=s;x.classList.add('show');clearTimeout(x._tm);x._tm=setTimeout(()=>x.classList.remove('show'),2600)}
+function msg(el,s,e=false){el.innerHTML=`<div class="msg ${e?'err':''}">${esc(s)}</div>`}
+function haversineKm(aLat,aLng,bLat,bLng){
+  const R=6371, rad=x=>x*Math.PI/180;
+  const dLat=rad(bLat-aLat), dLng=rad(bLng-aLng);
+  const a=Math.sin(dLat/2)**2+Math.cos(rad(aLat))*Math.cos(rad(bLat))*Math.sin(dLng/2)**2;
+  return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+}
+function osmEmbed(lat,lng){
+  const d=.012;
+  return `https://www.openstreetmap.org/export/embed.html?bbox=${encodeURIComponent(lng-d)},${encodeURIComponent(lat-d)},${encodeURIComponent(lng+d)},${encodeURIComponent(lat+d)}&layer=mapnik&marker=${encodeURIComponent(lat)},${encodeURIComponent(lng)}`;
+}
+function updatePassengerMap(r,d){
+  const card=$('driverMapCard');
+  if(!r || !d || d.latitude==null || d.longitude==null || !['accepted','arrived','in_progress'].includes(r.status)){
+    card.classList.add('hidden'); $('driverMap').removeAttribute('src'); return;
+  }
+  card.classList.remove('hidden');
+  const lat=Number(d.latitude), lng=Number(d.longitude);
+  const src=osmEmbed(lat,lng); if($('driverMap').src!==src) $('driverMap').src=src;
+  $('openMap').href=`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(lat+','+lng)}`;
+  let line=t('liveMap');
+  if(r.pickup_lat!=null && r.pickup_lng!=null){
+    const km=haversineKm(Number(r.pickup_lat),Number(r.pickup_lng),lat,lng);
+    line=t('driverAway').replace('{km}',km<1?km.toFixed(2):km.toFixed(1));
+  }
+  $('driverDistance').textContent=line;
+}
+async function pushDriverLocation(lat,lng){
+  if(!user||!driver||!driver.is_online)return;
+  const now=Date.now(); if(now-lastDriverGpsPush<5000)return; lastDriverGpsPush=now;
+  try{
+    await rest(`drivers?user_id=eq.${encodeURIComponent(user.id)}`,{method:'PATCH',prefer:'return=minimal',body:{latitude:lat,longitude:lng,updated_at:new Date().toISOString()}});
+    driver.latitude=lat; driver.longitude=lng; $('gpsShareStatus').textContent=t('gpsSharing');
+  }catch(e){ $('gpsShareStatus').textContent=e.message; }
+}
+function startDriverGps(){
+  if(driverWatchId!==null || !navigator.geolocation)return;
+  $('gpsShareStatus').textContent=t('gpsSharing');
+  driverWatchId=navigator.geolocation.watchPosition(
+    p=>pushDriverLocation(p.coords.latitude,p.coords.longitude),
+    ()=>{$('gpsShareStatus').textContent=t('gpsOff')},
+    {enableHighAccuracy:true,maximumAge:5000,timeout:15000}
+  );
+}
+function stopDriverGps(){
+  if(driverWatchId!==null && navigator.geolocation){navigator.geolocation.clearWatch(driverWatchId);driverWatchId=null}
+  if($('gpsShareStatus')) $('gpsShareStatus').textContent=t('gpsOff');
+}
+function authHeaders(json=true){const h={apikey:SUPABASE_KEY,Authorization:`Bearer ${session?.access_token||SUPABASE_KEY}`};if(json)h['Content-Type']='application/json';return h}
+async function parseResponse(r){const txt=await r.text();let data=null;try{data=txt?JSON.parse(txt):null}catch{data=txt}if(!r.ok){throw new Error((data&&data.message)||(data&&data.error_description)||(data&&data.hint)||txt||`HTTP ${r.status}`)}return data}
+async function authRequest(path,body){const r=await fetch(SUPABASE_URL+'/auth/v1'+path,{method:'POST',headers:{apikey:SUPABASE_KEY,Authorization:`Bearer ${SUPABASE_KEY}`,'Content-Type':'application/json'},body:JSON.stringify(body||{})});return parseResponse(r)}
+async function rest(path,{method='GET',body=null,prefer=''}={}){const h=authHeaders(body!==null);if(prefer)h.Prefer=prefer;const r=await fetch(SUPABASE_URL+'/rest/v1/'+path,{method,headers:h,body:body===null?undefined:JSON.stringify(body)});return parseResponse(r)}
+async function rpc(name,args){return rest('rpc/'+name,{method:'POST',body:args})}
+function saveSession(s){session=s;localStorage.setItem('db_session',JSON.stringify(s))}
+function clearSession(){session=null;user=null;localStorage.removeItem('db_session')}
+function storedSession(){try{return JSON.parse(localStorage.getItem('db_session')||'null')}catch{return null}}
+async function refreshSession(s){try{const r=await authRequest('/token?grant_type=refresh_token',{refresh_token:s.refresh_token});saveSession(r);return r}catch{clearSession();return null}}
+async function ensureAuth(){
+  $('live').textContent=t('connecting');
+  let s=storedSession();
+  if(s?.access_token){
+    const exp=s.expires_at||0;
+    if(exp && Date.now()>exp*1000-60000 && s.refresh_token) s=await refreshSession(s);
+  }
+  if(!s?.access_token){
+    try{s=await authRequest('/signup',{data:{}});if(!s?.access_token)throw new Error('Anonymous session was not returned.');saveSession(s)}
+    catch(e){$('live').textContent='Connection error';toast(e.message);throw e}
+  }
+  session=s;user=s.user;
+  $('live').textContent=t('live');
+  return true;
+}
+
+function setLang(l){lang=l;localStorage.dbLang=l;document.documentElement.lang=l;document.querySelectorAll('[data-k]').forEach(x=>x.textContent=t(x.dataset.k));document.querySelectorAll('[data-lang]').forEach(x=>x.classList.toggle('active',x.dataset.lang===l));if(driver){$('gpsShareStatus').textContent=driver.is_online?t('gpsSharing'):t('gpsOff')}if(user)refresh()}
+function role(r){const p=r==='p';$('passengerView').classList.toggle('hidden',!p);$('driverView').classList.toggle('hidden',p);$('tabP').classList.toggle('active',p);$('tabD').classList.toggle('active',!p);localStorage.dbRole=r;if(!p&&user)loadDriver()}
+
+// Static UI handlers are attached BEFORE any network call, so tabs/languages always work.
+document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+$('tabP').addEventListener('click',()=>role('p'));
+$('tabD').addEventListener('click',()=>role('d'));
+
+$('pGps').addEventListener('click',()=>{
+  if(!navigator.geolocation)return toast(t('gpsFail'));
+  navigator.geolocation.getCurrentPosition(p=>{geo={lat:p.coords.latitude,lng:p.coords.longitude};toast(t('gps'))},()=>toast(t('gpsFail')),{enableHighAccuracy:true,timeout:10000});
+});
+
+$('requestBtn').addEventListener('click',async()=>{
+  if(!user){try{await ensureAuth()}catch{return}}
+  const passenger_name=$('pName').value.trim(), passenger_phone=$('pPhone').value.trim(), pickup=$('pickup').value.trim(), destination=$('destination').value.trim();
+  if(!passenger_name||!passenger_phone||!pickup||!destination)return msg($('pMsg'),t('fill'),true);
+  localStorage.pn=passenger_name;localStorage.pp=passenger_phone;
+  const btn=$('requestBtn');btn.disabled=true;
+  try{
+    const ex=await rest(`ride_requests?select=id&passenger_user_id=eq.${encodeURIComponent(user.id)}&status=in.(pending,accepted,arrived,in_progress)&limit=1`);
+    if(ex?.length)return msg($('pMsg'),t('already'),true);
+    await rest('ride_requests',{method:'POST',prefer:'return=representation',body:{passenger_user_id:user.id,passenger_name,passenger_phone,pickup,destination,pickup_lat:geo.lat,pickup_lng:geo.lng}});
+    msg($('pMsg'),t('sent'));await loadPassenger();
+  }catch(e){msg($('pMsg'),e.message,true)}finally{btn.disabled=false}
+});
+
+async function loadPassenger(){
+  if(!user)return;
+  try{
+    const q=await rest(`ride_requests?select=*&passenger_user_id=eq.${encodeURIComponent(user.id)}&status=in.(pending,accepted,arrived,in_progress)&order=created_at.desc&limit=1`);
+    if(!q?.length){$('pRide').className='empty';$('pRide').textContent=t('noRide');updatePassengerMap(null,null);return}
+    const r=q[0];let d=null;
+    if(r.driver_user_id){const z=await rest(`drivers?select=*&user_id=eq.${encodeURIComponent(r.driver_user_id)}&limit=1`);d=z?.[0]||null}
+    $('pRide').className='';$('pRide').innerHTML=rideHtml(r,d,'p');updatePassengerMap(r,d);
+    const c=$('cancelRide');if(c)c.onclick=async()=>{try{await rpc('cancel_ride',{p_ride_id:r.id});await loadPassenger()}catch(e){toast(e.message)}};
+  }catch(e){$('pRide').className='empty';$('pRide').textContent=e.message}
+}
+function rideHtml(r,d,mode){
+  const s=r.status==='pending'?'waiting':r.status;
+  const dbox=d?`<div class="route"><b>🛺 ${esc(d.full_name)}</b>${esc(d.plate_number)} • <a href="tel:${esc(d.phone)}">${esc(d.phone)}</a></div>`:'';
+  let actions='';
+  if(mode==='p'&&r.status==='pending')actions=`<button id="cancelRide" class="danger">${t('cancel')}</button>`;
+  if(mode==='d'&&r.status==='pending')actions=`<button class="take" id="take_${r.id}">${t('accept')}</button>`;
+  if(mode==='d'&&r.status==='accepted')actions=`<button class="take" data-st="arrived">${t('arrived')}</button>`;
+  if(mode==='d'&&r.status==='arrived')actions=`<button class="take" data-st="in_progress">${t('start')}</button>`;
+  if(mode==='d'&&r.status==='in_progress')actions=`<button class="take" data-st="completed">${t('complete')}</button>`;
+  return `<div class="ride"><div class="head"><strong>${mode==='d'?esc(r.passenger_name):esc(t(s))}</strong><span class="badge ${r.status}">${esc(r.status)}</span></div><div class="route"><b>${t('from')}</b>${esc(r.pickup)}</div><div class="route"><b>${t('to')}</b>${esc(r.destination)}</div>${mode==='d'?`<div class="route"><b>${t('phone')}</b><a href="tel:${esc(r.passenger_phone)}">${esc(r.passenger_phone)}</a></div>`:''}${dbox}<div class="actions">${actions}</div></div>`;
+}
+
+$('saveDriver').addEventListener('click',async()=>{
+  if(!user){try{await ensureAuth()}catch{return}}
+  const full_name=$('dName').value.trim(),phone=$('dPhone').value.trim(),plate_number=$('dPlate').value.trim();
+  if(!full_name||!phone||!plate_number)return msg($('dMsg'),t('fill'),true);
+  try{
+    await rest('drivers?on_conflict=user_id',{method:'POST',prefer:'resolution=merge-duplicates,return=representation',body:{user_id:user.id,full_name,phone,plate_number}});
+    msg($('dMsg'),t('saved'));await loadDriver();
+  }catch(e){msg($('dMsg'),e.message,true)}
+});
+async function loadDriver(){
+  if(!user)return;
+  try{
+    const q=await rest(`drivers?select=*&user_id=eq.${encodeURIComponent(user.id)}&limit=1`);driver=q?.[0]||null;
+    $('registerCard').classList.toggle('hidden',!!driver);$('driverPanel').classList.toggle('hidden',!driver);if(!driver)return;
+    $('online').checked=!!driver.is_online;$('onlineText').textContent=driver.is_online?'ONLINE':t('offline');$('gpsShareStatus').textContent=driver.is_online?t('gpsSharing'):t('gpsOff');if(driver.is_online)startDriverGps();else stopDriverGps();await loadDriverRides();
+  }catch(e){toast(e.message)}
+}
+$('online').addEventListener('change',async()=>{
+  if(!driver)return;const v=$('online').checked;
+  try{await rest(`drivers?user_id=eq.${encodeURIComponent(user.id)}`,{method:'PATCH',prefer:'return=representation',body:{is_online:v,updated_at:new Date().toISOString()}});driver.is_online=v;$('onlineText').textContent=v?'ONLINE':t('offline');if(v)startDriverGps();else stopDriverGps();await loadDriverRides()}
+  catch(e){$('online').checked=!v;toast(e.message)}
+});
+async function loadDriverRides(){
+  if(!driver)return;
+  try{
+    const a=await rest(`ride_requests?select=*&driver_user_id=eq.${encodeURIComponent(user.id)}&status=in.(accepted,arrived,in_progress)&order=created_at.desc&limit=1`);
+    if(a?.length){const r=a[0];$('activeRide').className='';$('activeRide').innerHTML=rideHtml(r,null,'d');document.querySelectorAll('#activeRide [data-st]').forEach(b=>b.onclick=async()=>{try{await rpc('update_ride_status',{p_ride_id:r.id,p_status:b.dataset.st});await loadDriverRides()}catch(e){toast(e.message)}})}
+    else{$('activeRide').className='empty';$('activeRide').textContent=t('noActive')}
+    if(!driver.is_online){$('queue').className='empty';$('queue').textContent=t('offline');return}
+    const q=await rest('ride_requests?select=*&status=eq.pending&order=created_at.asc&limit=30');
+    if(!q?.length){$('queue').className='empty';$('queue').textContent=t('noRequests');return}
+    $('queue').className='';$('queue').innerHTML=q.map(r=>rideHtml(r,null,'d')).join('');
+    q.forEach(r=>{const b=$('take_'+r.id);if(b)b.onclick=async()=>{try{const z=await rpc('accept_ride',{p_ride_id:r.id});if(z!==true)toast(t('other'));await loadDriverRides()}catch(e){toast(e.message)}}});
+  }catch(e){$('queue').className='empty';$('queue').textContent=e.message}
+}
+async function refresh(){if(!user||busy)return;busy=true;try{await loadPassenger();if(!$('driverView').classList.contains('hidden'))await loadDriver()}finally{busy=false}}
+function startPolling(){clearInterval(pollTimer);pollTimer=setInterval(()=>{if(document.visibilityState==='visible')refresh()},2500)}
+
+window.addEventListener('beforeunload',()=>stopDriverGps());
+$('pName').value=localStorage.pn||'';$('pPhone').value=localStorage.pp||'';
+setLang(lang);role(localStorage.dbRole||'p');
+ensureAuth().then(()=>{refresh();startPolling()}).catch(()=>{});
+
+</script></body></html>
